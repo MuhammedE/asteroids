@@ -29,6 +29,11 @@ def main():
     while True:
         for sprite in updatables:
             sprite.update(dt)
+        for asteroid in asteroids:
+            if asteroid.is_colliding(player):
+                print("Game Over")
+                exit(0)
+
         
         screen.fill((0,0,0))
         
