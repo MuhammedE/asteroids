@@ -4,6 +4,7 @@ from shot import *
 
 class Player(CircleShape):
     containers = None
+    shot_fired = False
     def __init__(self,x,y):
         super().__init__(x,y,PLAYER_RADIUS)
         self.rotation = 0
@@ -30,6 +31,7 @@ class Player(CircleShape):
             shot = Shot(self.position.x,self.position.y)
             shot.velocity = pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
             self.time_until_shooting_possible = PLAYER_SHOOT_COOLDOWN 
+            Player.shot_fired = True
 
     def draw(self,screen):
         white = pygame.Color(255,255,255)
